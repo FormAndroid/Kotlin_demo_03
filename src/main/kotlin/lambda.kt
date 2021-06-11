@@ -1,3 +1,5 @@
+import kotlin.math.sqrt
+
 fun main() {
 
     // Lambda
@@ -12,6 +14,7 @@ fun main() {
     val d2 = modifyList(d1) { v -> v * 2 }
     val d3 = modifyList(d1) { it * 3 }
     val d4 = modifyList(d1) { x -> traitementComplexe(x) }
+    val d5 = modifyList(d1) { x -> (x * 2 / sqrt(x.toDouble())).toInt() }
 }
 
 fun traitementComplexe(nb: Int): Int {
@@ -22,7 +25,7 @@ fun traitementComplexe(nb: Int): Int {
 }
 
 fun modifyList(values: List<Int>, lambda: (Int) -> Int): List<Int> {
-    val result: MutableList<Int> = values.toMutableList();
+    val result: MutableList<Int> = values.toMutableList()
 
     for (i in 0 until result.size) {
         result[i] = lambda(result[i])
